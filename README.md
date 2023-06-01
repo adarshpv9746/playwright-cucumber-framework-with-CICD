@@ -8,7 +8,6 @@ This project is currently based on
 
  - Playwright
  - Cucumber
- - 
  
 ## Project Structure
 - allure-config

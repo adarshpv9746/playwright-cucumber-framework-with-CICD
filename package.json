@@ -31,13 +31,7 @@
     "url": "https://code.qburst.com/playwright-test-automation-framework/js_playwright_framework"
   },
   "keywords": [],
-  "author": "rahul.viswanathan@qburst.com",
-  "contributors": [
-    "akhilbabu@qburst.com",
-    "lini@qburst.com",
-    "adarshvijayan@qburst.com",
-    "dhanish@qburst.com"
-  ],
+  "author": "adarshpv9@gmail.com",
   "license": "ISC",
   "dependencies": {
     "@cucumber/cucumber": "^9.1.0",
