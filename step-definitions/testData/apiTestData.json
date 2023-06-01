@@ -1,0 +1,12 @@
+{
+  "country": "India",
+  "productName": "adidas original",
+  "productsPayload": {
+      "maxPrice": null,
+      "minPrice": null,
+      "productCategory": [],
+      "productFor": [],
+      "productName": "",
+      "productSubCategory": []
+  }
+}

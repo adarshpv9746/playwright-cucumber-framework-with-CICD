@@ -1,0 +1,7 @@
+{
+  "client": "/client/",
+  "login": "/api/ecom/auth/login",
+  "productsList": "/api/ecom/product/get-all-products",
+  "createOrder": "/api/ecom/order/create-order",
+  "ordersList": "/api/ecom/order/get-orders-for-customer/630c94f2c4d0c51f4f119b2b"
+}

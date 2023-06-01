@@ -1,0 +1,74 @@
+{
+  "name": "poc-playwright-cucumber",
+  "version": "1.0.0",
+  "description": "poc of playwright framework with cucumber",
+  "main": "index.js",
+  "scripts": {
+    "testapi": "rm -rf reports && chmod +rwx execute.sh && ./execute.sh && npx cucumber-js -p testapi",
+    "testapiui": "rm -rf reports && chmod +rwx execute.sh && ./execute.sh && npx cucumber-js -p testapiui",
+    "test": "rm -rf reports && chmod +rwx execute.sh && ./execute.sh && npx cucumber-js",
+    "tst": "rm -rf reports && NODE_ENV=tst npx cucumber-js -p allure",
+    "stg": "rm -rf reports && NODE_ENV=stg npx cucumber-js -p allure",
+    "prd": "rm -rf reports && NODE_ENV=prd npx cucumber-js -p allure",
+    "generate-allure": "allure generate ./reports/json/allure-results --clean && node ./node_modules/allure-single-html-file-js/combine.js ./allure-report && node ./allure-config/rename-move.js && node ./allure-config/htmltopdf.js",
+    "allure-report": "open-cli ./allure-report/index.html",
+    "cucumber-report": "node reporter.js",
+    "open-trace": "npx playwright show-trace ./reports/trace/trace*.zip --browser=chromium --port=13146",
+    "send-report": "node ./allure-config/sendmail.js tester@mailinator.com",
+    "make-me-pretty": "prettier-eslint \"**/*.js\" --write",
+    "lint": "eslint . --fix --max-warnings=0",
+    "regression": "rm -rf reports && chmod +rwx execute.sh && ./execute.sh && npx cucumber-js -p regression",
+    "testing" : "NODE_ENV=$test_env npx cucumber-js -p $reporter"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "npm run make-me-pretty",
+      "npm run lint"
+    ]
+  },
+  "repository": {
+    "type": "GitLab",
+    "url": "https://code.qburst.com/playwright-test-automation-framework/js_playwright_framework"
+  },
+  "keywords": [],
+  "author": "rahul.viswanathan@qburst.com",
+  "contributors": [
+    "akhilbabu@qburst.com",
+    "lini@qburst.com",
+    "adarshvijayan@qburst.com",
+    "dhanish@qburst.com"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^9.1.0",
+    "allure-commandline": "^2.22.0",
+    "allure-cucumberjs": "^2.1.0",
+    "allure-single-html-file-js": "^0.0.4",
+    "chai": "^4.3.7",
+    "config": "^3.3.9",
+    "cucumber-html-reporter": "^5.5.0",
+    "exceljs": "^4.3.0",
+    "fs-extra": "^11.1.1",
+    "nodemailer": "^6.9.1",
+    "open-cli": "^7.2.0",
+    "pdf-lib": "^1.17.1",
+    "playwright": "^1.33.0",
+    "playwright-cli": "^0.180.0",
+    "prettier": "^2.8.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "husky": "^3.0.0",
+    "lint-staged": "^13.2.2",
+    "prettier-eslint-cli": "^7.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
