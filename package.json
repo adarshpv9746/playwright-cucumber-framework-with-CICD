@@ -1,5 +1,5 @@
 {
-  "name": "poc-playwright-cucumber",
+  "name": "poc-playwright-cucumber-allure",
   "version": "1.0.0",
   "description": "poc of playwright framework with cucumber",
   "main": "index.js",
