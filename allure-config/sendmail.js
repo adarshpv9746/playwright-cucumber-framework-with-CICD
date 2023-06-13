@@ -7,12 +7,13 @@ const reportJson = require(reportPath)
 
 if (process.argv.length < 3) {
   console.error(
-    'Recipient emails not provided. Usage: node send-email.js email1@example.com,email2@example.com'
+    'Recipient emails not provided. Usage: node send-email.js email1@example.com,email2@example.com optional-reporter-name'
   )
   process.exit(1)
 }
 
 const recipientEmails = process.argv[2].split(',')
+const report = process.argv[3].toLowerCase()
 
 // extracting failed and passed scenarios
 const failedScenarios = []
@@ -33,12 +34,13 @@ reportJson.forEach((feature) => {
 })
 
 async function sendMail () {
+  console.log(report)
   // Configure your username and app password here
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'sender@gmail.com',
-      pass: 'app-password'
+      user: 'adarshvijayan@qburst.com',
+      pass: 'nlwzjizlqhdlqlaa'
     }
   })
 
@@ -90,19 +92,24 @@ async function sendMail () {
         </table>
       </body>
     </html>
-  `,
-    attachments: [
+  `
+  }
+  if (report === 'allure') {
+    mailOptions.attachments = [
       {
         filename: 'allure-report.html',
         path: path.join(__dirname, '../reports/html/allure_report.html')
       },
       {
-        filename: 'cucumber-report.html',
-        path: path.join(__dirname, '../reports/html/cucumber_report.html')
-      },
-      {
         filename: 'allure-report.pdf',
         path: path.join(__dirname, '../reports/pdfs/allure.pdf')
+      }
+    ]
+  } else if (report === 'cucumber') {
+    mailOptions.attachments = [
+      {
+        filename: 'cucumber-report.html',
+        path: path.join(__dirname, '../reports/html/cucumber_report.html')
       }
     ]
   }
