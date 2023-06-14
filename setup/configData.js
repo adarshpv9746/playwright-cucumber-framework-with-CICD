@@ -8,6 +8,7 @@ const CONFIG_DATA = {
   headlessMode: false,
   device: devices[''],
   // smtp_username and password must be base 64 encrypted
+  // Note: If 2FA is enabled, you should use app-password else you can use gmail login password
   smtp_username: 'YWRhcnNodmlqYXlhbkBxYnVyc3QuY29t',
   smtp_pass: 'bmx3emppemxxaGRscWxocQ=='
 }
