@@ -50,8 +50,8 @@ browser=$browser test_env=$test_env reporter=$reporter npm run testing
 
 if [ $reporter == "cucumber" ]
 then
-    npm run cucumber-report && npm run send-report
+    npm run cucumber-report && reporter=$reporter npm run send-report
 elif [ $reporter == "allure" ]
 then
-    npm run generate-allure && npm run allure-report && npm run send-report
+    npm run generate-allure && npm run allure-report && reporter=$reporter npm run send-report
 fi

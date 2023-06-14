@@ -14,7 +14,7 @@
     "allure-report": "open-cli ./allure-report/index.html",
     "cucumber-report": "node reporter.js",
     "open-trace": "npx playwright show-trace ./reports/trace/trace*.zip --browser=chromium --port=13146",
-    "send-report": "node ./allure-config/sendmail.js tester@mailinator.com",
+    "send-report": "node ./allure-config/sendmail.js tester@mailinator.com,csicoet18@gmail.com $reporter",
     "make-me-pretty": "prettier-eslint \"**/*.js\" --write",
     "lint": "eslint . --fix --max-warnings=0",
     "regression": "rm -rf reports && chmod +rwx execute.sh && ./execute.sh && npx cucumber-js -p regression",

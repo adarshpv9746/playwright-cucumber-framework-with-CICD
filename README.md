@@ -201,8 +201,18 @@ Run the following command to generate html version of allure report
    - Comma-separated recipient list can be added.
    ```
    Command : npm run send-report
-   Note: By default the system emails allure-report.html, cucumber-report-html, and allure.pdf.
+   Note: By default the system emails a basic email test report.
    
+   ```
+   Email with Allure-report
+   ```
+   command: reporter='allure' npm run send-report
+   Note: This sends the basic test email along with allure-report.html and allure.pdf
+   ```
+   Email with Cucumber-report
+   ```
+   command: reporter='cucumber' npm run send-report
+   Note: This sends the basic test email along with cucumber-report.html
    ```
 ## Read Data from excel sheet
 

@@ -13,8 +13,10 @@ if (process.argv.length < 3) {
 }
 
 const recipientEmails = process.argv[2].split(',')
-const report = process.argv[3].toLowerCase()
-
+let report = null
+if (process.argv[3]) {
+  report = process.argv[3].toLowerCase()
+}
 // extracting failed and passed scenarios
 const failedScenarios = []
 const passedScenarios = []
@@ -34,13 +36,21 @@ reportJson.forEach((feature) => {
 })
 
 async function sendMail () {
-  console.log(report)
+  if (report === 'cucumber') {
+    console.log('sending report email with cucumber-report.html attachment')
+  } else if (report === 'allure') {
+    console.log(
+      'sending report email with allure-report.html and allure.pdf attachments'
+    )
+  } else {
+    console.log('Sending basic report email with test results')
+  }
   // Configure your username and app password here
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: 'adarshvijayan@qburst.com',
-      pass: 'nlwzjizlqhdlqlaa'
+      pass: 'nlwzjizlqhdlqlhq'
     }
   })
 
