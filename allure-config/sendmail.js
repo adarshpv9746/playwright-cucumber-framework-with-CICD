@@ -1,17 +1,21 @@
 const nodemailer = require('nodemailer')
 const path = require('path')
+const { getDecryptedData } = require('../utils/decryptData')
+const CONFIG_DATA = require('../setup/configData')
+
+// decrypting smtp credentials - username and app-password
+const username = getDecryptedData(CONFIG_DATA.smtp_username)
+const password = getDecryptedData(CONFIG_DATA.smtp_pass)
 
 // Read the Cucumber report
 const reportPath = path.join(__dirname, '../reports/json/cucumber_report.json')
 const reportJson = require(reportPath)
-
 if (process.argv.length < 3) {
   console.error(
     'Recipient emails not provided. Usage: node send-email.js email1@example.com,email2@example.com optional-reporter-name'
   )
   process.exit(1)
 }
-
 const recipientEmails = process.argv[2].split(',')
 let report = null
 if (process.argv[3]) {
@@ -49,8 +53,8 @@ async function sendMail () {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'adarshvijayan@qburst.com',
-      pass: 'nlwzjizlqhdlqlhq'
+      user: username,
+      pass: password
     }
   })
 
