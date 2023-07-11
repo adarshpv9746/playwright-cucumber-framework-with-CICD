@@ -196,7 +196,7 @@ Run the following command to generate html version of allure report
 
    ``` 
 ## Email the report
-   - You should first configure your username and app password within ./allure-config/sendmail.js.
+   - You should first configure your username and app password within setup/configData.js.
    - Recipient list should be updated in the `send-report` script in `package.json`.
    - Comma-separated recipient list can be added.
    ```
@@ -204,14 +204,14 @@ Run the following command to generate html version of allure report
    Note: By default the system emails a basic email test report.
    
    ```
-   Email with Allure-report
+   `Email with Allure-report`
    ```
-   command: reporter='allure' npm run send-report
+   command: npm run send-report allure
    Note: This sends the basic test email along with allure-report.html and allure.pdf
    ```
-   Email with Cucumber-report
+   `Email with Cucumber-report`
    ```
-   command: reporter='cucumber' npm run send-report
+   command: npm run send-report cucumber
    Note: This sends the basic test email along with cucumber-report.html
    ```
 ## Read Data from excel sheet
