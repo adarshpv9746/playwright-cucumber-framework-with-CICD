@@ -11,7 +11,7 @@ if (process.argv.length < 3) {
 const file = process.argv[2]
 
 // Define the output directory path
-const outputDir = 'pdf-pages'
+const outputDir = '../../../pdf-extracted-images/pdf-pages'
 
 // Check if the output directory exists, and create it if it doesn't
 if (!fs.existsSync(outputDir)) {

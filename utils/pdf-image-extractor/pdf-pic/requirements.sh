@@ -1,0 +1,1 @@
+sudo apt install fdupes imagemagick poppler-utils

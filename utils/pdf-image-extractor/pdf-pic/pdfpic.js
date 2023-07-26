@@ -194,9 +194,9 @@ const savePng = (image) =>
       .on('error', (err) => reject(err))
   })
 
-const imagesFolder = './pdf-images'
+const imagesFolder = '../../../pdf-extracted-images/pdf-images'
 
-// Function to create the "images" folder if it doesn't exist
+// // Function to create the "images" folder if it doesn't exist
 const createImagesFolder = () => {
   if (!fs.existsSync(imagesFolder)) {
     fs.mkdirSync(imagesFolder)
@@ -210,7 +210,7 @@ const generateImageHash = (imageData) => {
   return hash.digest('hex')
 }
 
-rimraf('./pdf-images/*.{jpg,png}', async (err) => {
+rimraf('../../../pdf-extracted-images/pdf-images/*.{jpg,png}', async (err) => {
   if (err) console.error(err)
   else {
     createImagesFolder() // Create the "images" folder
@@ -230,6 +230,6 @@ rimraf('./pdf-images/*.{jpg,png}', async (err) => {
       }
     }
     console.log()
-    console.log('Unique images written to ./pdf-images')
+    console.log('Unique images written to pdf-extracted-images')
   }
 })

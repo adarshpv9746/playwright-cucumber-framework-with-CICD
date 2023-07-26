@@ -1,4 +1,6 @@
-/node_modules/*
+/node_modules
+/utils/pdf-image-extractor/pdf-pic/node_modules/
 /reports/*
 *_report*
 /allure-report
+/pdf-extracted-images

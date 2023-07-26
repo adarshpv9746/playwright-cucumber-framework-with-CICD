@@ -1,5 +1,6 @@
 #!/bin/bash
-
+chmod +x requirements.sh
+./requirements.sh
 # Check if the pdfimages, convert, and fdupes commands are available
 if ! command -v pdfimages &> /dev/null || ! command -v convert &> /dev/null || ! command -v fdupes &> /dev/null; then
   echo "pdfimages, convert, or fdupes command not found. Please install 'poppler-utils' (pdfimages), 'imagemagick' (convert), and 'fdupes' packages."
@@ -13,7 +14,7 @@ if [ $# -ne 1 ]; then
 fi
 
 input_pdf="$1"
-images_folder="images"
+images_folder="../../../pdf-extracted-images/pdf-images/"
 
 # Create the "images" folder if it doesn't exist
 mkdir -p "$images_folder"
@@ -31,4 +32,4 @@ done
 # Use fdupes to remove duplicate images
 fdupes -rdN "$images_folder"
 
-echo "Images extracted, converted to PNG format, and duplicate images removed. Saved to $images_folder/"
+echo "Images extracted, converted to PNG format, and duplicate images removed. Saved to pdf-extracted-images"
