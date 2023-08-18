@@ -166,6 +166,14 @@ Note:
 - While allure reporting dot report wont be generated.
 - Adjust the package.json script and cucumber.js to run the required scenarios in a particular environment. Refer [here](https://github.com/cucumber/cucumber-js/blob/main/docs/profiles.md#using-profiles-for-arguments) on how to run multiple profiles
 
+## To run multiple scenarios:
+- Update the scenario names in datainput/scenarios.csv
+- Run the following script:
+
+```
+npm run multiple
+```
+
 ## Run Lint for static code analysis
    ```
    Tool Used : eslint

@@ -1,0 +1,2 @@
+Scenario: User should be able to authenticate, create order and access the order id through api
+Scenario: User should be able to click on an item and navigate to the details page

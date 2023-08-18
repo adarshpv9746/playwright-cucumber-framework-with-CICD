@@ -1,7 +1,6 @@
 /node_modules
-/utils/pdf-image-extractor/pdf-pic/node_modules/
 /reports/*
 *_report*
 /allure-report
 /pdf-extracted-images
-scenario-line.csv
+/utils/pdf-image-extractor/pdf-pic/node_modules/

@@ -8,6 +8,9 @@ const {
 const CONFIG_DATA = require('./configData')
 const { getBrowserType } = require('./init')
 const allure = require('allure-js-commons')
+const { setDefaultTimeout } = require('@cucumber/cucumber')
+
+setDefaultTimeout(CONFIG_DATA.default_timeout * 1000)
 let step = 0
 let feature = 0
 
@@ -15,7 +18,8 @@ BeforeAll(async function () {
   // Launch browser
   const browserType = await getBrowserType()
   global.browser = await browserType.launch({
-    headless: CONFIG_DATA.headlessMode
+    headless: CONFIG_DATA.headlessMode,
+    args: ['--start-maximized']
   })
 })
 
@@ -25,7 +29,10 @@ AfterAll(async function () {
 
 Before(async function () {
   // Creating new browser context
-  global.context = await global.browser.newContext({ ...CONFIG_DATA.device })
+  global.context = await global.browser.newContext({
+    ...CONFIG_DATA.device,
+    viewport: null
+  })
   global.page = await global.context.newPage()
   await global.context.tracing.start({
     path: 'trace.json',
