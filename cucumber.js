@@ -1,9 +1,21 @@
 const CONFIG_DATA = require('./setup/configData')
 const fs = require('fs')
 
-// Read CSV and build scenario array
-const csvData = fs.readFileSync('scenario-line.csv', 'utf-8')
-const scenarios = csvData.split('\n').map((row) => row.trim())
+const scenarioLineFilePath = 'outputs/scenario-line.csv'
+
+let scenarioCommands = []
+
+// Check if the scenario-line.csv file exists
+if (fs.existsSync(scenarioLineFilePath)) {
+  // Read CSV and build scenario array
+  const csvData = fs.readFileSync(scenarioLineFilePath, 'utf-8')
+  const scenarios = csvData.split('\n').map((row) => row.trim())
+
+  scenarioCommands = scenarios.map((scenario) => {
+    const [featureFile, line] = scenario.split(':')
+    return `${featureFile}:${line}`
+  })
+}
 
 const common = `
   --require setup/assertions.js
@@ -14,20 +26,15 @@ const common = `
   -f json:reports/json/cucumber_report.json
 `
 
-const scenarioCommands = scenarios.map((scenario) => {
-  const [featureFile, line] = scenario.split(':')
-  return `${featureFile}:${line}`
-})
-
-console.log(scenarioCommands.join(' '))
-
 module.exports = {
-  testapi: `${common} --tags "@API"`,
-  testapiui: `${common} --tags "@API-UI"`,
   default: `${common}`,
-  regression: `${common} --tags "@Regression"`,
   allure: `${common} -f ./allure-config/allure-conf.js`,
   cucumber: `${common} -f json:reports/json/cucumber_report.json`,
-  // sanity: `${common} features/userLogin.feature:5 features/itemDetail.feature:4`
-  sanity: `${common} ${scenarioCommands.join(' ')}`
+  sanity: `${common} ${scenarioCommands.join(' ')}`,
+  // -----------------------------------------------------------------
+  // --------The code below can be modified as per requirement--------
+  // -----------------------------------------------------------------
+  testapi: `${common} --tags "@API"`,
+  testapiui: `${common} --tags "@API-UI"`,
+  regression: `${common} --tags "@Regression"`
 }

@@ -1,5 +1,6 @@
 const glob = require('glob')
 const fs = require('fs')
+const path = require('path')
 
 const folderPath = 'features/'
 const outputTxtFile = 'outputs/scenario-line.csv'
@@ -7,7 +8,7 @@ const fileExtensions = ['feature', 'txt']
 
 ;(async () => {
   try {
-    const csvData = fs.readFileSync('datainput/scenario.csv', 'utf-8')
+    const csvData = fs.readFileSync('datainput/multiple-scenarios.csv', 'utf-8')
     const rows = csvData.split('\n').map((row) => {
       return { action: row.trim() }
     })
@@ -34,6 +35,13 @@ const fileExtensions = ['feature', 'txt']
     }
 
     const outputData = matchedLines.join('\n')
+
+    // Create the "outputs" folder if it doesn't exist
+    const outputFolderPath = path.dirname(outputTxtFile)
+    if (!fs.existsSync(outputFolderPath)) {
+      fs.mkdirSync(outputFolderPath, { recursive: true })
+    }
+
     fs.writeFile(outputTxtFile, outputData, { encoding: 'utf8' }, (err) => {
       if (err) {
         console.error(`Error writing to file: ${err}`)
