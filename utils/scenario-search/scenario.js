@@ -2,7 +2,7 @@ const glob = require('glob')
 const fs = require('fs')
 
 const folderPath = 'features/'
-const outputTxtFile = 'scenario-line.csv'
+const outputTxtFile = 'outputs/scenario-line.csv'
 const fileExtensions = ['feature', 'txt']
 
 ;(async () => {
@@ -19,18 +19,17 @@ const fileExtensions = ['feature', 'txt']
 
       const files = await searchFiles(action, folderPath, fileExtensions)
       if (files.length > 0) {
-        // matchedLines.push(`Action: ${action}`);
         for (const file of files) {
           const fileContent = fs.readFileSync(file, 'utf-8')
           const lines = fileContent.split('\n')
           for (let i = 0; i < lines.length; i++) {
-            const line = lines[i]
-            if (line.includes(action)) {
+            const line = lines[i].trim()
+            const pattern = new RegExp(`^${action}\\s*$`)
+            if (pattern.test(line)) {
               matchedLines.push(`${file}:${i + 1}`)
             }
           }
         }
-        // matchedLines.push('');
       }
     }
 
