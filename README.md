@@ -167,12 +167,22 @@ Note:
 - Adjust the package.json script and cucumber.js to run the required scenarios in a particular environment. Refer [here](https://github.com/cucumber/cucumber-js/blob/main/docs/profiles.md#using-profiles-for-arguments) on how to run multiple profiles
 
 ## To run multiple scenarios:
-- Update the scenario names in datainput/scenarios.csv in the format "``scenario:`` exact_scenario_name"
-- Run the following script:
+- Update the scenario names in suites/default-scenarios.csv in the format "``scenario:`` exact_scenario_name"
+- You can also create new csv files inside the suites folder with scenarios listed in the format "``scenario:`` exact_scenario_name"
+- You can execute the scenarios using the shell script:
 
 ```
-npm run multiple
+./multiple.sh scenarios.csv
 ```
+- Here you should replace ``scenarios.csv`` to the csv file you want to use and it should be located in the ./suites folder.
+- All the scenarios listed within the ``scenarios.csv`` will be executed
+- You can also specify the test environment, browser, and report to be used as follows:
+
+```
+./multiple.sh scenarios.csv tst chrome cucumber
+```
+- By default we will be running all the scenarios listed within suites/default-scenarios.csv file in the ``tst`` environment on the ``chrome`` browser and we use ``cucumber`` reporting.
+
 
 ## Run Lint for static code analysis
    ```

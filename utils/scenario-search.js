@@ -5,10 +5,11 @@ const path = require('path')
 const folderPath = 'features/'
 const outputTxtFile = 'outputs/scenario-line.csv'
 const fileExtensions = ['feature', 'txt']
+const inputCsv = process.env.csv_scenario
 
 ;(async () => {
   try {
-    const csvData = fs.readFileSync('datainput/multiple-scenarios.csv', 'utf-8')
+    const csvData = fs.readFileSync(inputCsv, 'utf-8')
     const rows = csvData.split('\n').map((row) => {
       return { action: row.trim() }
     })
