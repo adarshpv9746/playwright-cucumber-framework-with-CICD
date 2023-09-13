@@ -30,7 +30,7 @@ module.exports = {
   default: `${common}`,
   allure: `${common} -f ./allure-config/allure-conf.js`,
   cucumber: `${common} -f json:reports/json/cucumber_report.json`,
-  sanity: `${common} ${scenarioCommands.join(' ')}`,
+  multiple: `${common} ${scenarioCommands.join(' ')}`,
   // -----------------------------------------------------------------
   // --------The code below can be modified as per requirement--------
   // -----------------------------------------------------------------

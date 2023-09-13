@@ -21,7 +21,7 @@
     "lint": "eslint . --fix --max-warnings=0",
     "regression": "rm -rf reports && chmod +rwx execute.sh && ./execute.sh && npx cucumber-js -p regression",
     "testing": "NODE_ENV=$test_env npx cucumber-js -p $reporter",
-    "multi-sh": "npm run scenario-extract && NODE_ENV=$test_env npx cucumber-js -p sanity -p $reporter"
+    "multi-sh": "npm run scenario-extract && NODE_ENV=$test_env npx cucumber-js -p multiple -p $reporter"
   },
   "lint-staged": {
     "**/*.js": [

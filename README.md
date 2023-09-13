@@ -172,6 +172,7 @@ Note:
 - You can execute the scenarios using the shell script:
 
 ```
+chmod +x multiple.sh
 ./multiple.sh scenarios.csv
 ```
 - Here you should replace ``scenarios.csv`` to the csv file you want to use and it should be located in the ./suites folder.
