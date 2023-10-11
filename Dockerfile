@@ -2,20 +2,20 @@ FROM ubuntu
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    libatk-bridge2.0-0 \
-    libx11-xcb1 \
-    libxcb-dri3-0 \
-    libdrm2 \
-    libgbm1 \
-    libxcomposite1 \
-    libxdamage1 \
-    libgtk-3-0 \
-    libatspi2.0-0 \
-    libpangocairo-1.0-0 \
-    libxss1 \
-    libnss3 \
-    libasound2 \
-    libatk1.0-0 \
+    # libatk-bridge2.0-0 \
+    # libx11-xcb1 \
+    # libxcb-dri3-0 \
+    # libdrm2 \
+    # libgbm1 \
+    # libxcomposite1 \
+    # libxdamage1 \
+    # libgtk-3-0 \
+    # libatspi2.0-0 \
+    # libpangocairo-1.0-0 \
+    # libxss1 \
+    # libnss3 \
+    # libasound2 \
+    # libatk1.0-0 \
     curl \
     xvfb
 
