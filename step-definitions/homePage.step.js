@@ -34,5 +34,5 @@ Then('User enters username and password and click login', async function () {
 
 Then('User should get logged in succesfully', async function () {
   const userName = await this.homePage.getLoggedInUserName()
-  await expect(userName).to.contain(username)
+  await expect(userName).to.contain(username + 1)
 })

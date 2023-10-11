@@ -37,5 +37,5 @@ COPY . .
 
 # Run the automation script
 RUN chmod +x execute.sh
-CMD xvfb-run ./execute.sh tst firefox cucumber
+CMD xvfb-run ./execute.sh tst firefox cucumber && xvfb-run ./multiple.sh  
 #CMD [ "xvfb-run", "./execute.sh", "tst", "firefox", "cucumber"]
